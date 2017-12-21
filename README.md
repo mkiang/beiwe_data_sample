@@ -1,12 +1,14 @@
-About the Beiwe Sample Android Dataset
+About the Beiwe Sample Dataset
 ================
-Mathew Kiang
-12/20/2017
+21 December, 2017
 
 -   [Introduction](#introduction)
-    -   [Legal: Citation and License](#legal-citation-and-license)
--   [Study parameters](#study-parameters)
--   [Original data](#original-data)
+    -   [About this data release](#about-this-data-release)
+    -   [Citation](#citation)
+    -   [License](#license)
+    -   [Funding](#funding)
+-   [About the original data](#about-the-original-data)
+    -   [`study_1`](#study_1)
     -   [Splitting the original data](#splitting-the-original-data)
     -   [Combining fake users into one](#combining-fake-users-into-one)
 -   [An example of GPS data](#an-example-of-gps-data)
@@ -14,24 +16,40 @@ Mathew Kiang
 Introduction
 ------------
 
-The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) collects high-density data from a variety of smartphone sensors including GPS, WiFi, Bluetooth, and accelerometer. To learn more about Beiwe, check out the [Onnela Lab](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) page, the [paper introducing the platform](https://mental.jmir.org/2016/2/e16/), or the [Beiwi wiki](http://wiki.beiwe.org/).
+### About this data release
 
-In order to help (current and potential) collaborators understand the structure and format of Beiwe data, I am making my personal data available to the public. These data were collected on an Android phone from May 30th, 2016 at 08:00 (UTC) to August 25th, 2016 at 07:59 (UTC).
+The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) collects high-density data from a variety of smartphone sensors including GPS, WiFi, Bluetooth, and accelerometer. To learn more about Beiwe, check out the [Onnela Lab](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) page, the [paper introducing the platform](https://mental.jmir.org/2016/2/e16/), or the [Beiwe wiki](http://wiki.beiwe.org/).
 
-The hope is that access to real data will allow researchers to (1) facilitate coding and debugging for ETL, data ingestion, and other parts of their pipeline before data is collected, (2) create functions to help inspect raw data, and (3) test new methods or functions on real data.
+In order to help (current and potential) collaborators understand the structure and format of Beiwe data, we are making our personal data available to the public. The hope is that access to real data will allow researchers to (1) facilitate coding and debugging for ETL, data ingestion, and other parts of their pipeline before data is collected, (2) create functions to help inspect raw data, and (3) test new methods or functions on real data.
 
-### Legal: Citation and License
+### Citation
 
 The Digital Object Identifier of this dataset is `10.5281/zenodo.1120327`. When using these data, please cite the dataset as
+
+> CITATION HERE
 
 When referring to the Beiwe Research Platform or how these data were collected, please cite the [JMIR-Mental Health paper](https://mental.jmir.org/2016/2/e16/) as:
 
 > Torous J, Kiang MV, Lorme J, Onnela JP, New Tools for New Research in Psychiatry: A Scalable and Customizable Platform to Empower Data Driven Smartphone Research, JMIR Ment Health 2016;3(2):e16. URL: <https://mental.jmir.org/2016/2/e16>, DOI: 10.2196/mental.5165
 
+### License
+
 This work is licensed under a [Creative Commons Attribution Share-Alike 4.0 License (CC-BY-SA-4.0)](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
-Study parameters
-----------------
+### Funding
+
+Development of the Beiwe Research Platform and data analysis pipeline was enabled by NIH Director’s New Innovator Award to Dr. [JP Onnela](https://github.com/jponnela) (DP2MH103909).
+
+About the original data
+-----------------------
+
+The original data come from XXX people over the course of three months. It was then split into XXX users and XXX studies.
+
+### `study_1`
+
+The original 8,468 data files are stored in 13 folders. The structure of this layout can be found in `original_data_tree.txt`.
+
+#### Parameters
 
 Researchers may specify different data collection parameters for every study. For these data, the Beiwe app collected accelerometer, Bluetooth, call, GPS, power state, text, and WiFi data. These data were collected at the following rates:
 
@@ -41,11 +59,6 @@ Researchers may specify different data collection parameters for every study. Fo
 -   WiFi (on and record): 10 seconds
 
 Call, power state, and text data were collected when events occurred, which was relatively infrequently.
-
-Original data
--------------
-
-The original 8,468 data files are stored in 13 folders. The structure of this layout can be found in `original_data_tree.txt`.
 
 ### Splitting the original data
 
@@ -121,4 +134,4 @@ knitr::include_graphics("./plots/chicago_map.jpg")
 
 <img src="./plots/chicago_map.jpg" width="1500" />
 
-See [mkiang.carto.com](https://mkiang.carto.com/viz/0de14940-cd4d-432c-86b2-b22f4848e74b/public_map) to interactively visualize these data, including movement over time.
+See [`http://mkiang.carto.com`](https://mkiang.carto.com/viz/0de14940-cd4d-432c-86b2-b22f4848e74b/public_map) to interactively visualize these data, including movement over time.
