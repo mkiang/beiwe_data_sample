@@ -3,21 +3,19 @@ title: "About the Beiwe Sample Dataset"
 # author: "Mathew Kiang"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
-  # pdf_document:
-  #   toc: false
   github_document: 
     toc: true
 ---
 
-## Introduction
+# Introduction
 
-### About this data release
+## About this data release
 
 The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) collects high-density data from a variety of smartphone sensors including GPS, WiFi, Bluetooth, and accelerometer. To learn more about Beiwe, check out the [Onnela Lab](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) page, the [paper introducing the platform](https://mental.jmir.org/2016/2/e16/), or the [Beiwe wiki](http://wiki.beiwe.org/).
 
 In order to help (current and potential) collaborators understand the structure and format of Beiwe data, we are making our personal data available to the public. The hope is that access to real data will allow researchers to (1) facilitate coding and debugging for ETL, data ingestion, and other parts of their pipeline before data is collected, (2) create functions to help inspect raw data, and (3) test new methods or functions on real data. 
 
-### Citation
+## Citation
 The Digital Object Identifier of this dataset is `10.5281/zenodo.1120327`. When using these data, please cite the dataset as 
 
 > CITATION HERE
@@ -26,31 +24,56 @@ When referring to the Beiwe Research Platform or how these data were collected, 
 
 > Torous J, Kiang MV, Lorme J, Onnela JP, New Tools for New Research in Psychiatry: A Scalable and Customizable Platform to Empower Data Driven Smartphone Research, JMIR Ment Health 2016;3(2):e16. URL: https://mental.jmir.org/2016/2/e16, DOI: 10.2196/mental.5165
 
-### License
+## License
 
 This work is licensed under a [Creative Commons Attribution Share-Alike 4.0 License (CC-BY-SA-4.0)](https://creativecommons.org/licenses/by-sa/4.0/legalcode). 
 
-### Funding
-Development of the Beiwe Research Platform and data analysis pipeline was enabled by NIH Director’s New Innovator Award to Dr. [JP Onnela](https://github.com/jponnela) (DP2MH103909).
+## Funding
+Development of the Beiwe Research Platform and data analysis pipeline was enabled by National Institute of Health Director’s New Innovator Award to Dr. [JP Onnela](https://www.hsph.harvard.edu/onnela-lab/) (DP2MH103909).
 
-## About the original data
+# Original data
 
-The original data come from XXX people over the course of three months. It was then split into XXX users and XXX studies. 
+The original data come from XXX people using XXX different study settings. It was then split into XXX users. In the public data, audio files have been removed. Further, some GPS data have been anonymized by creating a bounding box around sensitive areas. Any observation within that area is replaced by carrying the last observation (outside the bounding box) forward and adding a small around of Gaussian noise to the coordinates.
 
-### `study_1`
+The original XXX data files are stored in XX folders. The structure of this layout can be found in `original_data_tree.txt`. 
 
-The original 8,468 data files are stored in 13 folders. The structure of this layout can be found in `original_data_tree.txt`. 
+Researchers may specify different data collection parameters for every study. The Beiwe app collects accelerometer, Bluetooth, call, GPS, gyroscope, magnetometer, power state, proximity, text, and WiFi data whenever possible or specified. Not all sensors are available on all phones. Call, power state, and text data were collected when events occurred, which, in these test data, was relatively infrequently.
 
-#### Parameters
+## Study 1
 
-Researchers may specify different data collection parameters for every study. For these data, the Beiwe app collected accelerometer, Bluetooth, call, GPS, power state, text, and WiFi data. These data were collected at the following rates:
+Study 1 collected data from May 30, 2016 at 8am to August 25th, 2016 at 7:59am using the Beiwe app on an Android phone. These data were collected at the following rates:
 
 - Accelerometer (on/off): 600 seconds / 60 seconds
 - GPS (on/off): 7,140 seconds / 60 seconds
 - Bluetooth (on/total): 60 seconds / 300 seconds
 - WiFi (on and record): 10 seconds
 
-Call, power state, and text data were collected when events occurred, which was relatively infrequently.
+### Study 1: Example GPS Data
+
+We can view the rate of data collection as a heatmap where each row is an hour and each column is a day. White tiles represent missing data. 
+
+```{r fig.height=5}
+## Code can be found in "./code/plotting_hourly_heatmap_study1.R"
+knitr::include_graphics("./plots/hourly_heatmap.jpg")
+```
+
+Similarly, we can aggregate over time and show heatmap of all GPS points on a map of Chicago.
+
+```{r fig.height=5, fig.width=5}
+## Code can be found in "./code/plotting_chicago_data.R"
+knitr::include_graphics("./plots/chicago_map.jpg")
+```
+
+See [`http://mkiang.carto.com`](https://mkiang.carto.com/viz/0de14940-cd4d-432c-86b2-b22f4848e74b/public_map) to interactively visualize these GPS data, including movement over time.
+
+## Study 2
+
+Study 2 collected data from January 26, 2016 at 7pm to February 4, 2016 at 2:59pm using the Beiwe app on an Android phone. These data were collected at the following rates:
+
+- Accelerometer (on/off): 10 seconds / 10 seconds
+- GPS (on/off): 7,140 seconds / 60 seconds
+- Bluetooth (on/total): 60 seconds / 300 seconds
+- WiFi (on and record): 300 seconds
 
 ### Splitting the original data
 
@@ -105,22 +128,7 @@ all_gps <- all_gps %>%
 
 In this code, I merge all GPS files for all users separately. I then read in each of these merged files, remove duplicates with the `distinct()` function, and then sort by `timestamp`. The resulting dataframe is identical to reading in all original GPS files.
 
-## An example of GPS data
 
-We can view the rate of data collection as a heatmap where each row is an hour and each column is a day. 
 
-```{r}
-## Code can be found in "./code/plotting_hourly_heatmap.R"
-knitr::include_graphics("./plots/hourly_heatmap.jpg")
-```
-
-Similarly, we can aggregate over time and show heatmap of all GPS points on a map of Chicago.
-
-```{r}
-## Code can be found in "./code/plotting_chicago_data.R"
-knitr::include_graphics("./plots/chicago_map.jpg")
-```
-
-See [`http://mkiang.carto.com`](https://mkiang.carto.com/viz/0de14940-cd4d-432c-86b2-b22f4848e74b/public_map) to interactively visualize these data, including movement over time.
 
 
