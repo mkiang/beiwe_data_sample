@@ -1,18 +1,16 @@
-About the Beiwe Sample Dataset
+Public Sample Beiwe Dataset
 ================
-27 December, 2017
+05 March, 2018
 
 -   [Introduction](#introduction)
     -   [About this data release](#about-this-data-release)
     -   [Citation](#citation)
     -   [License](#license)
     -   [Funding](#funding)
--   [Original data](#original-data)
-    -   [Study 1](#study-1)
-        -   [Study 1: Example GPS Data](#study-1-example-gps-data)
-    -   [Study 2](#study-2)
-        -   [Splitting the original data](#splitting-the-original-data)
-        -   [Combining fake users into one](#combining-fake-users-into-one)
+-   [About the data](#about-the-data)
+    -   [Anonymization](#anonymization)
+    -   [Study settings](#study-settings)
+-   [Sample plots](#sample-plots)
 
 Introduction
 ============
@@ -22,14 +20,14 @@ About this data release
 
 The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) collects high-density data from a variety of smartphone sensors including GPS, WiFi, Bluetooth, and accelerometer. To learn more about Beiwe, check out the [Onnela Lab](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) page, the [paper introducing the platform](https://mental.jmir.org/2016/2/e16/), or the [Beiwe wiki](http://wiki.beiwe.org/).
 
-In order to help (current and potential) collaborators understand the structure and format of Beiwe data, we are making our personal data available to the public. The hope is that access to real data will allow researchers to (1) facilitate coding and debugging for ETL, data ingestion, and other parts of their pipeline before data is collected, (2) create functions to help inspect raw data, and (3) test new methods or functions on real data.
+In order to help current and potential collaborators understand the structure and format of Beiwe data, we are making our personal data available to the public. The hope is that access to real data will allow researchers to (1) facilitate coding and debugging for ETL, data ingestion, and other parts of their pipeline before data is collected, (2) create functions to help inspect raw data, and (3) test new methods or functions on real data.
 
 Citation
 --------
 
-The Digital Object Identifier of this dataset is `10.5281/zenodo.1120327`. When using these data, please cite the dataset as
+The Digital Object Identifier of this dataset is [`10.5281/zenodo.1188879`](https://zenodo.org/record/1188879). When using these data, please cite the dataset as
 
-> CITATION HERE
+> Kiang, Mathew, Lorme, Jeanette, & Onnela, Jukka-Pekka. (2018). Public Sample Beiwe Dataset (Version 0.1) \[Data set\]. Zenodo. <http://doi.org/10.5281/zenodo.1188879>
 
 When referring to the Beiwe Research Platform or how these data were collected, please cite the [JMIR-Mental Health paper](https://mental.jmir.org/2016/2/e16/) as:
 
@@ -45,28 +43,123 @@ Funding
 
 Development of the Beiwe Research Platform and data analysis pipeline was enabled by National Institute of Health Director’s New Innovator Award to Dr. [JP Onnela](https://www.hsph.harvard.edu/onnela-lab/) (DP2MH103909).
 
-Original data
-=============
+About the data
+==============
 
-The original data come from XXX people using XXX different study settings. It was then split into XXX users. In the public data, audio files have been removed. Further, some GPS data have been anonymized by creating a bounding box around sensitive areas. Any observation within that area is replaced by carrying the last observation (outside the bounding box) forward and adding a small around of Gaussian noise to the coordinates.
+The original data come from 3 people using 5 different study settings of various durations and starting/ending dates.
 
-The original XXX data files are stored in XX folders. The structure of this layout can be found in `original_data_tree.txt`.
+Anonymization
+-------------
 
-Researchers may specify different data collection parameters for every study. The Beiwe app collects accelerometer, Bluetooth, call, GPS, gyroscope, magnetometer, power state, proximity, text, and WiFi data whenever possible or specified. Not all sensors are available on all phones. Call, power state, and text data were collected when events occurred, which, in these test data, was relatively infrequently.
+In the public release, all audio files have been removed (but users that collected audio files will still have an `audio_recordings` folder). Further, some GPS data have been anonymized by creating a bounding box around sensitive areas. Any observation within the bounding polygon is replaced anonymized by using last observation carried forward and adding a small amount of Gaussian noise.
 
-Study 1
--------
+Study settings
+--------------
 
-Study 1 collected data from May 30, 2016 at 8am to August 25th, 2016 at 7:59am using the Beiwe app on an Android phone. These data were collected at the following rates:
+Researchers may specify different data collection parameters for every study. The Beiwe app collects accelerometer, Bluetooth, call, GPS, gyroscope, magnetometer, power state, proximity, text, and WiFi data whenever possible or specified. Not all sensors are available on all phones. Call, power state, and text data were collected when events occurred, which, in these test data, was relatively infrequently. See the [official Beiwe documentation](http://wiki.beiwe.org/) for more details.
 
--   Accelerometer (on/off): 600 seconds / 60 seconds
--   GPS (on/off): 7,140 seconds / 60 seconds
--   Bluetooth (on/total): 60 seconds / 300 seconds
--   WiFi (on and record): 10 seconds
+This table shows the study settings for each of the public-use studies. All durations are in seconds. The sensors are accelerometer ("Accel."), GPS, gyroscope ("Gyro."), magnetometer ("Mag."), DeviceMotion ("DM"; iOS devices only), Bluetooth ("BT"), and WiFi. Bluetooth is parameterized as amount of time spent on (logging nearby Bluetooth devices) out of a total amount of time. WiFi is parameterized as the frequency at which WiFi networks should be logged. All other sensors are parameterized as amount of time on and off.
 
-### Study 1: Example GPS Data
+<table style="width:100%;">
+<colgroup>
+<col width="15%" />
+<col width="5%" />
+<col width="11%" />
+<col width="11%" />
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="6%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Study ID</th>
+<th>Users (n)</th>
+<th>First file timestamp</th>
+<th>Last file timestamp</th>
+<th>Accel. (on/off)</th>
+<th>GPS (on/off)</th>
+<th>Gyro. (on/off)</th>
+<th>Mag. (on/off)</th>
+<th>DM (on/off)</th>
+<th>BT (on/total)</th>
+<th>WiFi (log freq)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>onnela_lab_gps_testing</code></td>
+<td>1</td>
+<td><code>2016-01-26 19_00_00</code></td>
+<td><code>2016-02-04 14_00_00</code></td>
+<td>10/10</td>
+<td>7140/60</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/300</td>
+<td>300</td>
+</tr>
+<tr class="even">
+<td><code>onnela_lab_ios_test1</code></td>
+<td>1</td>
+<td><code>2016-06-03 19_00_00</code></td>
+<td><code>2016-06-04 16_00_00</code></td>
+<td>10/900</td>
+<td>60/1200</td>
+<td>60/1200</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/300</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td><code>onnela_lab_ios_test2</code></td>
+<td>2</td>
+<td><code>2016-06-07 18_00_00</code></td>
+<td><code>2016-06-08 00_00_00</code></td>
+<td>10/10</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/300</td>
+<td>300</td>
+</tr>
+<tr class="even">
+<td><code>onnela_lab_test1</code></td>
+<td>1</td>
+<td><code>2016-10-17 19_00_00</code></td>
+<td><code>2017-02-13 13_00_00</code></td>
+<td>10/1250</td>
+<td>60/1200</td>
+<td>60/1200</td>
+<td>60/1200</td>
+<td>60/1200</td>
+<td>60/300</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td><code>passive_data_high_sampling</code></td>
+<td>1</td>
+<td><code>2016-05-30 08_00_00</code></td>
+<td><code>2016-08-25 07_00_00</code></td>
+<td>600/60</td>
+<td>7140/60</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/600</td>
+<td>60/300</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
 
-We can view the rate of data collection as a heatmap where each row is an hour and each column is a day. White tiles represent missing data.
+Sample plots
+============
 
 ``` r
 ## Code can be found in "./code/plotting_hourly_heatmap_study1.R"
@@ -83,68 +176,3 @@ knitr::include_graphics("./plots/chicago_map.jpg")
 ```
 
 <img src="./plots/chicago_map.jpg" width="1500" />
-
-See [`http://mkiang.carto.com`](https://mkiang.carto.com/viz/0de14940-cd4d-432c-86b2-b22f4848e74b/public_map) to interactively visualize these data, including movement over time.
-
-Study 2
--------
-
-Study 2 collected data from January 26, 2016 at 7pm to February 4, 2016 at 2:59pm using the Beiwe app on an Android phone. These data were collected at the following rates:
-
--   Accelerometer (on/off): 10 seconds / 10 seconds
--   GPS (on/off): 7,140 seconds / 60 seconds
--   Bluetooth (on/total): 60 seconds / 300 seconds
--   WiFi (on and record): 300 seconds
-
-### Splitting the original data
-
-Realistic Beiwe data will come from multiple users. To simulate the structure of real data, I split up the data in the following way:
-
-1.  For each file with ≥50 lines of data, I randomly assign each line to one of five fake users.
-2.  For each file with &lt;50 lines of data, I simply copy that entire file to each of the five fake users.
-
-The code that performed the data splitting can be found in `./code/split_original_data.R`.
-
-### Combining fake users into one
-
-By construction, the majority of files will each contain distinct, non-overlapping parts of the original data. To reconstruct the original data, just read in the file from each user, remove duplicate rows, and sort by timestamp. An example of this is in `./code/plotting_chicago_data.R` with the germane parts here:
-
-``` r
-library(tidyverse)
-
-## Helper functions ----
-bash_merge <- function(folder, awk = TRUE, joined_file = "0000-merged.csv") {
-    # Uses bash `awk` or `cat` to merge files. 
-    # In general, faster than looping `fread()` for `read_csv`. 
-    # Note: `cat` doesn't work if there is a header row.
-    original_wd <- getwd()
-    setwd(folder)
-    if (awk){
-        system(paste0("awk 'FNR==1 && NR!=1{next;}{print}' *.csv > ", 
-                      joined_file))
-    } else {
-        system(paste0("cat *.csv > ", joined_file))
-    }
-    setwd(original_wd)
-}
-
-## Merge all gps files within each user ----
-for (f in list.dirs('./data', recursive = FALSE)) {
-    bash_merge(paste0(f, "/gps"))
-}
-
-## Now import all five merged files ----
-all_gps <- NULL
-for (f in list.files("./", recursive = TRUE, pattern = "0000-merged.csv")) {
-    all_gps <- rbind(all_gps, read_csv(f))
-}
-
-## Sort it and remove duplicates (none in the default case, but possible on 
-## other data)
-all_gps <- all_gps %>% 
-    arrange(desc(timestamp)) %>% 
-    distinct() %>% 
-    ungroup()
-```
-
-In this code, I merge all GPS files for all users separately. I then read in each of these merged files, remove duplicates with the `distinct()` function, and then sort by `timestamp`. The resulting dataframe is identical to reading in all original GPS files.
