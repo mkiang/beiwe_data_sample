@@ -1,10 +1,11 @@
 Public Sample Beiwe Dataset
 ================
-05 March, 2018
+Last Update: 09 March, 2018
 
 -   [Introduction](#introduction)
     -   [About this data release](#about-this-data-release)
-    -   [Citation](#citation)
+    -   [Getting the data](#getting-the-data)
+    -   [Citations](#citations)
     -   [License](#license)
     -   [Funding](#funding)
 -   [About the data](#about-the-data)
@@ -22,8 +23,13 @@ The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-rese
 
 In order to help current and potential collaborators understand the structure and format of Beiwe data, we are making our personal data available to the public. The hope is that access to real data will allow researchers to (1) facilitate coding and debugging for ETL, data ingestion, and other parts of their pipeline before data is collected, (2) create functions to help inspect raw data, and (3) test new methods or functions on real data.
 
-Citation
---------
+Getting the data
+----------------
+
+Due to size limitations, this repository does not contain the data. To get the data, please [download it from Zenodo](https://zenodo.org/record/1188879). This repository contains information about the data, and we will add example notebooks of manipulating the data here. The original, raw release will always remain the same at the [Zenodo](https://zenodo.org/record/1188879) page.
+
+Citations
+---------
 
 The Digital Object Identifier of this dataset is [`10.5281/zenodo.1188879`](https://zenodo.org/record/1188879). When using these data, please cite the dataset as
 
@@ -36,7 +42,7 @@ When referring to the Beiwe Research Platform or how these data were collected, 
 License
 -------
 
-This work is licensed under a [Creative Commons Attribution Share-Alike 4.0 License (CC-BY-SA-4.0)](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+This work (both code and data) is licensed under a [Creative Commons Attribution Share-Alike 4.0 License (CC-BY-SA-4.0)](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
 Funding
 -------
@@ -51,7 +57,7 @@ The original data come from 3 people using 5 different study settings of various
 Anonymization
 -------------
 
-In the public release, all audio files have been removed (but users that collected audio files will still have an `audio_recordings` folder). Further, some GPS data have been anonymized by creating a bounding box around sensitive areas. Any observation within the bounding polygon is replaced anonymized by using last observation carried forward and adding a small amount of Gaussian noise.
+In [the public release dataset](https://zenodo.org/record/1188879), all audio files have been removed (but users that collected audio files will still have an `audio_recordings` folder). Further, some GPS data have been anonymized by creating a bounding box around sensitive areas. Any observation within the bounding polygon is replaced anonymized by using last observation carried forward and adding a small amount of Gaussian noise.
 
 Study settings
 --------------
