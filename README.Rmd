@@ -1,5 +1,5 @@
 ---
-title: "Public Sample Beiwe Dataset"
+title: "Information about the Public Sample Beiwe Dataset"
 # author: "Mathew Kiang"
 date: "Last Update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -9,7 +9,7 @@ output:
 
 # Introduction
 
-## About this data release
+## About the data release
 
 The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) collects high-density data from a variety of smartphone sensors including GPS, WiFi, Bluetooth, and accelerometer. To learn more about Beiwe, check out the [Onnela Lab](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) page, the [paper introducing the platform](https://mental.jmir.org/2016/2/e16/), or the [Beiwe wiki](http://wiki.beiwe.org/).
 

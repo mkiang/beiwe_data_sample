@@ -1,9 +1,9 @@
-Public Sample Beiwe Dataset
+Information about the Public Sample Beiwe Dataset
 ================
 Last Update: 09 March, 2018
 
 -   [Introduction](#introduction)
-    -   [About this data release](#about-this-data-release)
+    -   [About the data release](#about-the-data-release)
     -   [Getting the data](#getting-the-data)
     -   [Citations](#citations)
     -   [License](#license)
@@ -16,8 +16,8 @@ Last Update: 09 March, 2018
 Introduction
 ============
 
-About this data release
------------------------
+About the data release
+----------------------
 
 The [Beiwe Research Platform](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) collects high-density data from a variety of smartphone sensors including GPS, WiFi, Bluetooth, and accelerometer. To learn more about Beiwe, check out the [Onnela Lab](https://www.hsph.harvard.edu/onnela-lab/beiwe-research-platform/) page, the [paper introducing the platform](https://mental.jmir.org/2016/2/e16/), or the [Beiwe wiki](http://wiki.beiwe.org/).
 
